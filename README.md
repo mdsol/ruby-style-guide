@@ -194,7 +194,13 @@ You can generate a PDF or an HTML copy of this guide using
 
 * Use RDoc and its conventions for API documentation.  Don't put an
   empty line between the comment block and the `def`.
-* Keep lines fewer than 80 characters.
+* Keep lines fewer than 120 characters. This is how many github will show 
+  without scrolling to the right. 80 is a common recommendation, but some 
+  find this too limiting, which is fine - but 120 is the maximum. 
+
+    Note that this applies to ruby code, and where possible other files, but 
+    where not possible (such as cucumber features) this limitation may not apply. 
+
 * Avoid trailing whitespace.
 
 ## Syntax
