@@ -202,6 +202,9 @@ You can generate a PDF or an HTML copy of this guide using
     where not possible (such as cucumber features) this limitation may not apply. 
 
 * Avoid trailing whitespace.
+* End files with a newline. It's good practice, and without it git complains with
+
+    `\ No newline at end of file`
 
 ## Syntax
 
