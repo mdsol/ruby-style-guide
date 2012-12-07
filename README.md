@@ -249,6 +249,23 @@ You can generate a PDF or an HTML copy of this guide using
     # good
     arr.each { |elem| puts elem }
     ```
+* Avoid comparing booleans to boolean constants.
+
+	```Ruby
+	# bad
+	if condition == true
+	
+	# good
+	if condition
+	
+	# bad
+	options[:verbose] = true
+	puts "Loading…" unless options[:verbose] == false
+	
+	# good
+	options[:silent] = false
+	puts "Loading…" unless options[:silent]
+	```
 
 * Never use `then` for multi-line `if/unless`.
 
