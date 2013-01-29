@@ -157,8 +157,7 @@ You can generate a PDF or an HTML copy of this guide using
     end
     ```
 
-* Indent the parameters of a method call with two spaces if they span over multiple lines. 
-  Optionally place the trailing `)` on its own line returning to the parent indentation.
+* Align the parameters of a method call if they span over multiple lines.
 
     ```Ruby
     # starting point (line is too long)
@@ -166,12 +165,13 @@ You can generate a PDF or an HTML copy of this guide using
       Mailer.deliver(to: 'bob@example.com', from: 'us@example.com', subject: 'Important message', body: source.text)
     end
 
-    # bad (large indent aligning with the method's open-parenthesis) 
+    # bad (normal indent)
     def send_mail(source)
-      Mailer.deliver(to: 'bob@example.com',
-                     from: 'us@example.com',
-                     subject: 'Important message',
-                     body: source.text)
+      Mailer.deliver(
+        to: 'bob@example.com',
+        from: 'us@example.com',
+        subject: 'Important message',
+        body: source.text)
     end
 
     # bad (double indent)
@@ -183,23 +183,12 @@ You can generate a PDF or an HTML copy of this guide using
           body: source.text)
     end
 
-    # good (two space indent)
+    # good
     def send_mail(source)
-      Mailer.deliver(
-        to: 'bob@example.com',
-        from: 'us@example.com',
-        subject: 'Important message',
-        body: source.text)
-    end
-
-    # good (two space indent with close parenthesis returning to parent indent)
-    def send_mail(source)
-      Mailer.deliver(
-        to: 'bob@example.com',
-        from: 'us@example.com',
-        subject: 'Important message',
-        body: source.text
-      )
+      Mailer.deliver(to: 'bob@example.com',
+                     from: 'us@example.com',
+                     subject: 'Important message',
+                     body: source.text)
     end
     ```
 
