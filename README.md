@@ -190,6 +190,17 @@ You can generate a PDF or an HTML copy of this guide using
                      subject: 'Important message',
                      body: source.text)
     end
+
+    # good (if the start of the parameter list is far right then start the parameter list on the next line and use a
+    # sane indentation)
+    def send_mail(source)
+      Mailer_with_a_too_long_name.deliver_with_a_way_to_long_method_name_that_would_not_leave_much_space_on_line(
+          to: 'bob@example.com',
+          from: 'us@example.com',
+          subject: 'Important message',
+          body: source.text)
+    end
+
     ```
 
 * Use RDoc and its conventions for API documentation.  Don't put an
