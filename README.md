@@ -415,7 +415,7 @@ You can generate a PDF or an HTML copy of this guide using
   internal DSL (e.g. Rake, Rails, RSpec), methods that are with
   "keyword" status in Ruby (e.g. `attr_reader`, `puts`) and attribute
   access methods. Use parentheses around the arguments of all other
-  method invocations.
+  method invocations. <PROVIDE MORE CLARIFICATION HERE>
 
     ```Ruby
     class Person
