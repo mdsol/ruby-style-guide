@@ -202,6 +202,18 @@ You can generate a PDF or an HTML copy of this guide using
       )
     end
     ```
+    
+* When the purpose of one or more parameters to a method is opaque, introduce
+  an inline explanatory variable to match the method signature.
+
+  ```Ruby
+  
+  # good (avoid mysterious booleans)
+  person.save(validate = false)
+  
+  # good (distinguish between ordered arguments of the same type)
+  FooReader.new.read(max_retries = 0, max_bytes = 255)
+  ```
 
 * Use RDoc and its conventions for API documentation.  Don't put an
   empty line between the comment block and the `def`.
