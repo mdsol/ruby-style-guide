@@ -219,18 +219,8 @@ You can generate a PDF or an HTML copy of this guide using
 
 ## Syntax
 
-* Use `def` with parentheses when there are arguments. Omit the
-  parentheses when the method doesn't accept any arguments.
 
-     ```Ruby
-     def some_method
-       # body omitted
-     end
-
-     def some_method_with_arguments(arg1, arg2)
-       # body omitted
-     end
-     ```
+### For
 
 * Never use `for`, unless you know exactly why. Most of the time iterators
   should be used instead. `for` is implemented in terms of `each` (so
@@ -249,6 +239,9 @@ You can generate a PDF or an HTML copy of this guide using
     # good
     arr.each { |elem| puts elem }
     ```
+
+### Comparisons
+
 * Avoid comparing booleans to boolean constants.
 
 	```Ruby
@@ -266,6 +259,8 @@ You can generate a PDF or an HTML copy of this guide using
 	options[:silent] = false
 	puts "Loading…" unless options[:silent]
 	```
+
+### If blocks
 
 * Never use `then` for multi-line `if/unless`.
 
@@ -411,27 +406,7 @@ You can generate a PDF or an HTML copy of this guide using
     end
     ```
 
-* Omit parentheses around parameters for methods that are part of an
-  internal DSL (e.g. Rake, Rails, RSpec), methods that are with
-  "keyword" status in Ruby (e.g. `attr_reader`, `puts`) and attribute
-  access methods. Use parentheses around the arguments of all other
-  method invocations.
-
-    ```Ruby
-    class Person
-      attr_reader :name, :age
-
-      # omitted
-    end
-
-    temperance = Person.new('Temperance', 30)
-    temperance.name
-
-    puts temperance.age
-
-    x = Math.sin(y)
-    array.delete(e)
-    ```
+### Blocks
 
 * Prefer `{...}` over `do...end` for single-line blocks.  Avoid using
   `{...}` for multi-line blocks (multiline chaining is always
@@ -463,6 +438,65 @@ You can generate a PDF or an HTML copy of this guide using
     ask themselves - it this code really readable and can't the blocks contents be extracted into
     nifty methods.
 
+* Use the new lambda literal syntax.
+
+    ```Ruby
+    # bad
+    lambda = lambda { |a, b| a + b }
+    lambda.call(1, 2)
+
+    # good
+    lambda = ->(a, b) { a + b }
+    lambda.(1, 2)
+    ```
+
+* Use `_` for unused block parameters.
+
+    ```Ruby
+    # bad
+    result = hash.map { |k, v| v + 1 }
+
+    # good
+    result = hash.map { |_, v| v + 1 }
+    ```
+
+### Methods
+
+* Use `def` with parentheses when there are arguments. Omit the
+  parentheses when the method doesn't accept any arguments.
+
+     ```Ruby
+     def some_method
+       # body omitted
+     end
+
+     def some_method_with_arguments(arg1, arg2)
+       # body omitted
+     end
+     ```
+
+* Omit parentheses around parameters for methods that are part of an
+  internal DSL (e.g. Rake, Rails, RSpec), methods that are with
+  "keyword" status in Ruby (e.g. `attr_reader`, `puts`) and attribute
+  access methods. Use parentheses around the arguments of all other
+  method invocations.
+
+    ```Ruby
+    class Person
+      attr_reader :name, :age
+
+      # omitted
+    end
+
+    temperance = Person.new('Temperance', 30)
+    temperance.name
+
+    puts temperance.age
+
+    x = Math.sin(y)
+    array.delete(e)
+    ```
+
 * Avoid `return` where not required.
 
     ```Ruby
@@ -493,6 +527,26 @@ You can generate a PDF or an HTML copy of this guide using
 
     While several Ruby books suggest the first style, the second is much more prominent
     in practice (and arguably a bit more readable).
+
+* Never put a space between a method name and the opening parenthesis.
+
+    ```Ruby
+    # bad
+    f (3 + 2) + 1
+
+    # good
+    f(3 + 2) + 1
+    ```
+
+* If the first argument to a method begins with an open parenthesis,
+  always use parentheses in the method invocation. For example, write
+`f((3 + 2) + 1)`.
+
+* Always run the Ruby interpreter with the `-w` option so it will warn
+you if you forget either of the rules above!
+
+
+### Assignments
 
 * Avoid line continuation (\\) where not required. In practice, avoid using
   line continuations at all.
@@ -543,23 +597,6 @@ would happen if the current value happened to be `false`.)
   etc. ). They are quite cryptic and their use in anything but
   one-liner scripts is discouraged.
 
-* Never put a space between a method name and the opening parenthesis.
-
-    ```Ruby
-    # bad
-    f (3 + 2) + 1
-
-    # good
-    f(3 + 2) + 1
-    ```
-
-* If the first argument to a method begins with an open parenthesis,
-  always use parentheses in the method invocation. For example, write
-`f((3 + 2) + 1)`.
-
-* Always run the Ruby interpreter with the `-w` option so it will warn
-you if you forget either of the rules above!
-
 * When the keys of your hash are symbols use the Ruby 1.9 hash literal
 syntax.
 
@@ -569,28 +606,6 @@ syntax.
 
     # good
     hash = { one: 1, two: 2 }
-    ```
-
-* Use the new lambda literal syntax.
-
-    ```Ruby
-    # bad
-    lambda = lambda { |a, b| a + b }
-    lambda.call(1, 2)
-
-    # good
-    lambda = ->(a, b) { a + b }
-    lambda.(1, 2)
-    ```
-
-* Use `_` for unused block parameters.
-
-    ```Ruby
-    # bad
-    result = hash.map { |k, v| v + 1 }
-
-    # good
-    result = hash.map { |_, v| v + 1 }
     ```
 
 ## Naming
