@@ -466,19 +466,35 @@ You can generate a PDF or an HTML copy of this guide using
 
     # good
     names.each { |name| puts name }
-
+    
     # bad
     names.each do |name|
       puts name
     end
 
+    Proc invokation shorthand when that is the only operation of a block
+
+    # bad
+    names.map { |name| name.upcase }
+
     # good
-    names.select { |name| name.start_with?("S") }.map { |name| name.upcase }
+    names.map(&:upcase)
+    ```
+
+* <a name="block-chaining">Chaining</a>
+
+    ```Ruby
+    # good
+    names.select { |name| name.start_with?("S") }.map(&:upcase)
+
+    names
+      .select { |name| name.start_with?("S") }
+      .map(&:upcase)
 
     # bad
     names.select do |name|
       name.start_with?("S")
-    end.map { |name| name.upcase }
+    end.map(&:upcase)
     ```
 
     Some will argue that multiline chaining would look OK with the use of {...}, but they should
