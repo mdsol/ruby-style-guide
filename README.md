@@ -436,9 +436,9 @@ You can generate a PDF or an HTML copy of this guide using
     end.map { |name| name.upcase }
     ```
 
-    Some will argue that multiline chaining would look OK with the use of {...}, but they should
-    ask themselves - it this code really readable and can't the blocks contents be extracted into
-    nifty methods.
+    Some will argue that multiline chaining would look OK with the use of `{...}`, but they should
+    ask themselves: Is this code really readable, and could the block contents be extracted into
+    nifty methods?
 
 * Use the new lambda literal syntax.
 
