@@ -850,6 +850,7 @@ in *Ruby* now, not in *Python*.
         # ...
       end
     end
+    ```
 
 * Use `def self.method` to define singleton methods. This makes the methods
   more resistant to refactoring changes.
