@@ -1,3 +1,13 @@
+# Deprecated
+
+This fork of the guide is deprecated.
+Please read the opensource [Ruby style guide](https://github.com/bbatsov/ruby-style-guide) instead.
+
+The README below is left only as reference but will not be updated and PR
+are not welcomed.
+
+***
+
 # Prelude
 
 > Style is what separates the good from the great. <br/>
